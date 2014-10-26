@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+    "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/templates/template.xhtml">
+
+	<ui:define name="corpo">
+		<h:form acceptcharset="UTF-8">
+			<ui:param name="bean" value="#{cidadaoController}" />
+			<a4j:outputPanel ajaxRendered="true">
+				<h:messages errorStyle="color: red" infoStyle="color: green" />
+			</a4j:outputPanel>
+			<div align="center">
+				<rich:tabPanel width="80%" height="150">
+					<br />
+
+					<rich:tab label="DADOS PESSOAIS">
+
+						<h:panelGrid columns="10">
+							<h:outputText value="Nome:" />
+							<div class="campoObrigatorio">*</div>
+							<rich:spacer width="8" />
+							<h:inputText value="#{cidadaoController.objeto.nome}"
+								required="false" requiredMessage="Informe o Nome." size="90" />
+								
+								
+								<rich:spacer width="11" />
+								<h:outputText value="Data Nascimento:" />
+								<h:inputText size="10"/>
+	
+	                            <rich:spacer width="11" />
+	                            <h:outputText value="Sexo:" />
+								<h:selectOneMenu >
+								  <f:selectItem itemLabel="Selecione"  />
+								</h:selectOneMenu> 
+								 
+						</h:panelGrid>
+                         <rich:spacer width="1" height="10"  />
+						<h:panelGrid columns="13">
+							<h:outputText value="CPF:" />
+							<rich:spacer width="20" />
+							<h:inputText id="cpf"/>
+							
+							<rich:spacer width="16" />
+							<h:outputText value="RG:" />
+							<h:inputText size="20"/>
+							
+							<rich:spacer width="16" />
+							<h:outputText value="Órgão Emissor:" />
+							<h:inputText size="20"/>
+							
+							<rich:spacer width="16" />
+							<h:outputText value="Data Emissão:" />
+							<rich:spacer width="1" />
+							<h:inputText size="10"/>
+								
+							
+
+						</h:panelGrid>
+						
+						 <rich:spacer width="1" height="10"  />
+						
+						
+						<h:panelGrid columns="11">
+							<h:outputText value="UF Nascimento:" />
+							<h:selectOneMenu value="">
+							   <f:selectItem itemLabel="Selecione" />
+							</h:selectOneMenu>
+							
+							<rich:spacer width="16" />
+							<h:outputText value="Naturalidade:" />
+							<h:selectOneMenu value="">
+							   <f:selectItem itemLabel="Selecione" />
+							</h:selectOneMenu>
+							
+							<rich:spacer width="70" />
+							<h:outputText value="Raça:" />
+							<h:selectOneMenu value="">
+							   <f:selectItem itemLabel="Selecione" />
+							</h:selectOneMenu>
+							
+							<rich:spacer width="90" />
+							<h:outputText value="Etnia:" />
+							<h:selectOneMenu value="">
+							   <f:selectItem itemLabel="Selecione" />
+							</h:selectOneMenu>
+								
+							
+
+						</h:panelGrid>
+						<rich:spacer width="1" height="10"  />
+						<h:panelGrid columns="11">
+							<h:outputText value="Telefone Residencial:" />
+							<h:inputText size="35" />
+							
+							<rich:spacer width="25" />
+							<h:outputText value="Telefone Celular:" />
+							<h:inputText size="30" />
+							
+							<rich:spacer width="16" />
+							<h:outputText value="Email:" />
+							<h:inputText size="30" />
+								
+							
+
+						</h:panelGrid>
+						
+						<rich:spacer width="1" height="10"  />
+						<h:panelGrid columns="6">
+							<h:outputText value="Nome da Mãe:" />
+							<rich:spacer width="27" />
+							<h:inputText size="40" />
+							<rich:spacer width="10" />
+							
+							<h:outputText value="Nome do Pai:" />
+							<h:inputText size="40" />
+								
+
+						</h:panelGrid>
+                         <rich:spacer width="1" height="10"  />
+
+                       <fieldset>
+							<legend>
+								<font color="blue">Endereco Residencial</font>
+							</legend>
+
+							<h:panelGrid columns="13">
+								<h:outputText value="CEP:" />
+								<rich:spacer width="5"/>
+								<h:inputText id="cep"/>
+								<rich:spacer width="5"/>
+								
+								<h:outputText value="Endereço:" />
+								<rich:spacer width="10"/>
+								<h:inputText size="40" />
+								<rich:spacer width="5"/>
+								
+								<h:outputText value="UF:" />
+								<h:selectOneMenu>
+								    <f:selectItem itemLabel="Selecione" />
+								</h:selectOneMenu>
+								<rich:spacer width="5"/> 
+								
+								<h:outputText value="Municipio:" />
+								<h:inputText />
+							
+							</h:panelGrid>
+							
+							<h:panelGrid columns="11">
+								<h:outputText value="Bairro:" />
+								<h:inputText />
+								<rich:spacer width="5"/>
+								
+								<h:outputText value="Complemento" />
+								<h:inputText size="40" />
+								<rich:spacer width="5"/>
+														
+							</h:panelGrid>
+
+							
+						</fieldset>
+
+
+					</rich:tab>
+
+					<rich:tab label="DADOS COMPLEMENTARES" ajaxSingle="true">
+					
+					  <fieldset>
+							<legend>
+								<font color="blue">Alfabetização</font>
+							</legend>
+							
+							 <h:panelGrid columns="8">
+					    
+					        <h:outputText value="Escolaridade" />
+					        <h:selectOneMenu value="">
+					           <f:selectItem itemLabel="Selecione" />
+					        </h:selectOneMenu>
+					        <rich:spacer width="10"/>
+					        
+					         <h:outputText value="Frequenta Entidade de Ensino?" />
+					        <h:selectOneMenu value="">
+					           <f:selectItem itemLabel="Selecione" />
+					        </h:selectOneMenu>
+					        
+					          <rich:spacer width="10"/>
+					          <h:outputLabel value="Nome da Entidade de Ensino:" />
+					          <h:inputText size="50" />
+					    
+					    </h:panelGrid>
+					
+					</fieldset>
+					
+					 <rich:spacer height="10"/>
+					   
+					 <fieldset>
+							<legend>
+								<font color="blue">Dependentes</font>
+							</legend>
+							
+							 <h:panelGrid columns="8">
+							      <h:outputLabel value="Quantidade de Dependentes:" />
+							      <h:selectOneMenu value="">
+					           <f:selectItem itemLabel="Selecione" />
+					        </h:selectOneMenu>
+					         <rich:spacer width="10"/>
+					         
+					                <h:outputLabel value="Programa Governamental:" />
+							      <h:selectOneMenu value="">
+					           <f:selectItem itemLabel="Selecione" />
+					        </h:selectOneMenu>
+					        
+					        
+							 </h:panelGrid>
+							 
+							 </fieldset>
+							 
+							 
+							 
+							  <rich:spacer height="10"/>
+					   
+					 <fieldset>
+							<legend>
+								<font color="blue">Dados Profissionais</font>
+							</legend>
+					
+					 <h:panelGrid columns="8">
+					      <h:outputLabel value="Já Trabalhou?" />
+					       <h:selectOneMenu value="">
+					           <f:selectItem itemLabel="Selecione" />
+					        </h:selectOneMenu>
+					       <rich:spacer height="20"/>
+					       
+					        <h:outputLabel value="Ultima Empresa:" />
+					        <h:inputText size="50" />
+					 </h:panelGrid>
+					
+					</fieldset>
+					
+					 <fieldset>
+							<legend>
+								<font color="blue">Documentos Complementares</font>
+							</legend>
+					
+					 <h:panelGrid columns="16">
+					 
+					      <h:outputLabel value="CPTR:" />
+					      <rich:spacer width="45"/>
+					      <h:inputText size="30" />
+					      <rich:spacer width="10"/>
+					           
+					       <h:outputLabel value="Série:" />
+					       <h:inputText size="15" />
+					      <rich:spacer width="10"/>
+					       
+					       <h:outputLabel value="Data Emissão:" />
+					       <h:inputText size="15" />
+					       <rich:spacer width="10"/>
+					       
+					        <h:outputLabel value="PIS/PASEP:" />
+					       <h:inputText size="15" />
+					       <rich:spacer width="10"/>
+					       
+					        <h:outputLabel value="NIS:" />
+					        <h:inputText size="15" />
+					       
+					 
+					 </h:panelGrid>
+					 
+					  <h:panelGrid columns="15">
+					 
+					      <h:outputLabel value="Titulo de ELeitor:" />
+					      <h:inputText size="30" />
+					      <rich:spacer width="10"/>
+					           
+					       <h:outputLabel value="Zona:" />
+					       <h:inputText size="15" />
+					      <rich:spacer width="40"/>
+					      
+					       <h:outputLabel value="Seção:" />
+					       <h:inputText size="15" />
+					      <rich:spacer width="10"/>
+					       
+					     
+					       
+					 
+					 </h:panelGrid>
+					 
+					 </fieldset>
+					
+					
+					</rich:tab>
+
+
+				</rich:tabPanel>
+
+				<br />
+
+				<ui:decorate template="../../templates/cadastro/botoes.xhtml">
+					<ui:param name="salvar" value="salvar" />
+					<ui:param name="listar" value="listar" />
+				</ui:decorate>
+
+				<table style="left: 30px">
+					<tr>
+						<td><font size="2">
+								<div align="center" class="campoObrigatorio">*Campo de
+									Preenchimento Obrigatório</div>
+						</font></td>
+					</tr>
+				</table>
+
+			</div>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+

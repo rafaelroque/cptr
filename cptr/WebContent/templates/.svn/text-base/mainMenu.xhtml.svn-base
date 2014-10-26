@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:sdh="http://richfaces.org/session-data-helper">
+	
+	
+<c:set var="ctx"
+	value="#{facesContext.externalContext.request.contextPath}" />
+<script type="text/javascript"
+	src="#{ctx}/js/jquery.maskedinput-1.2.1.js"></script>
+<script type="text/javascript" src="#{ctx}/js/jquery.maskMoney.0.2.js"></script>
+<script type="text/javascript" src="#{ctx}/js/teste.js"></script>
+<link href="#{ctx}/css/style.css" rel="stylesheet" type="text/css" />
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td width="463"><img src="#{ctx}/imagens/logosimemp.jpg" 
+		width="100%" height="140" />
+		   </td>
+	</tr>
+
+</table>
+<a4j:outputPanel rendered="#{loginController.logado}">
+
+	<ui:insert name="painel">
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+
+				<td height="23" style="width: 1300px;" valign="top"><h:form>
+						<rich:toolBar id="toolBar">
+
+
+
+							<rich:dropDownMenu
+								rendered="#{permissaoController.temPermissao('menuInstrumentos')}">
+								<f:facet name="label">
+									<h:panelGroup>
+										<h:outputText value="Atendimento" />
+									</h:panelGroup>
+								</f:facet>
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabInscricao')}"
+									value="Inscrição do Empreendedor"
+									action="#{preCadastroController.listar}" />
+									
+									
+									<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabAvaliacao')}"
+									value="Formulário de Entrevista do Empreendedor"
+									action="#{avaliacaoController.mostrarAvaliacao}" />
+									
+									
+									<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabCursosPresenciais')}"
+									value="Capacitações"
+									action="#{cursoPresencialController.listar}" />
+									
+
+<!-- 								<rich:menuItem -->
+<!-- 									rendered="#{permissaoController.temPermissao('tabAtendimento')}" -->
+<!-- 									value="Atendimento do Empreendedor" -->
+<!-- 									action="#{fichaAtendimentoController.listar}" /> -->
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabFichaInformacaoEmpreendedor')}"
+									value="Dados do Empreendedor"
+									action="#{fichaInformacaoEiController.listar}" />
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabFichaInformacaoEmpreendedor')}"
+									value="Ficha de Observação"
+									action="#{fichaObservacaoController.listar}" />
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabFichaDiagnostico')}"
+									value="Diagnóstico do Empreendedor"
+									action="#{fichaDiagnosticoController.listar}" />
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabFichaDiagnostico')}"
+									value="Relatório de Diagnóstico do Empreendedor "
+									action="#{relatorioDiagnosticoController.listar}" />
+
+							</rich:dropDownMenu>
+ 						
+
+							<rich:dropDownMenu rendered="false">
+								<f:facet name="label">
+									<h:panelGroup>
+										<h:outputText value="Instrumento de Campo" />
+									</h:panelGroup>
+								</f:facet>
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabInstrumento')}"
+									value="Imprimir Instrumento"
+									action="#{instrumentoController.imprimir}" />
+
+							</rich:dropDownMenu>
+
+							<rich:dropDownMenu
+								rendered="#{permissaoController.temPermissao('menuProjeto')}">
+								<f:facet name="label">
+									<h:panelGroup>
+										<h:outputText value="Projetos" />
+									</h:panelGroup>
+								</f:facet>
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabCriarProjeto')}"
+									value="Monitorar Projetos" action="#{projetoController.listar}" />
+
+								<rich:menuItem rendered="false" value="Monitorar Projetos"
+									action="#{projetoController.visualizarProjetos}" />
+
+								
+
+								<!--    <rich:menuItem value="Visualizar Listagem" action="#{projetoController.listar}"/>  -->
+
+
+								<rich:menuItem value="Visualizar Árvore"
+									action="#{arvoreController.listar}" />
+
+							</rich:dropDownMenu>
+
+
+
+
+							<rich:dropDownMenu
+								rendered="#{permissaoController.temPermissao('menuAdmin')}">
+								<f:facet name="label">
+									<h:panelGroup>
+										<h:outputText value="Administração" />
+									</h:panelGroup>
+								</f:facet>
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabSolicitacaoCadastro')}"
+									submitMode="ajax" value="Solicitações de Cadastro Portal EAD"
+									action="#{cadastroController.listar}" />
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabUsuario')}"
+									submitMode="ajax" value="Usuários do SGP"
+									action="#{usuarioController.listar}" />
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabPerfil')}"
+									submitMode="ajax" value="Perfis"
+									action="#{perfilController.listar}" />
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabPolo')}"
+									submitMode="ajax" value="Polos"
+									action="#{poloController.listar}" />
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabArea')}"
+									submitMode="ajax" value="Áreas de Atuação"
+									action="#{areaController.listar}" />
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabTutor')}"
+									submitMode="ajax" value="Tutores"
+									action="#{tutorController.listar}" />
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabAvaliacaoAdmin')}"
+									submitMode="ajax" value="Avaliações"
+									action="#{avaliacaoController.listar}" />
+
+								
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabLocaisCursosPresenciais')}"
+									value="Locais de Capacitações Presenciais"
+									action="#{citsController.listar}" />
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabManual')}"
+									value="Manual de Instruções Para Capacitação Presencial"
+									action="#{cursoPresencialController.imprimirManual}" />
+
+								<rich:menuItem rendered="false" value="Mapa" action="testarMapa" />
+
+							</rich:dropDownMenu>
+
+							<rich:dropDownMenu rendered="false">
+								<f:facet name="label">
+									<h:panelGroup>
+										<h:outputText value="Portal EAD - Relatórios Gerenciais " />
+									</h:panelGroup>
+								</f:facet>
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabInscritosCurso')}"
+									submitMode="ajax" value="Alunos Inscritos Por Curso"
+									action="#{moodleCursoController.listar}" />
+
+							</rich:dropDownMenu>
+
+							<rich:dropDownMenu
+								rendered="#{permissaoController.temPermissao('menuRelatorios')}">
+								<f:facet name="label">
+									<h:panelGroup>
+										<h:outputText value="Relatórios" />
+									</h:panelGroup>
+								</f:facet>
+
+								<rich:menuItem rendered="false"
+									value="Relatório de Atendimento por Polo"
+									action="#{preCadastroController.imprimirRelatorioPolo}" />
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabRelatorioAtendimento')}"
+									value="Relatório de Atendimento"
+									action="#{fichaAtendimentoController.imprimirRelatorio}" />
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabRelatorioIndicadores')}"
+									submitMode="ajax" value="Indicadores de Avaliação"
+									action="#{avaliacaoController.escolherIndicador}" />
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('tabRelatorioProdutividade')}"
+									value="Relatório de Produtividade Por Consultor"
+									action="#{produtividadeController.imprimir}" />
+
+							</rich:dropDownMenu>
+							
+							<rich:dropDownMenu
+								rendered="#{permissaoController.temPermissao('menuPreCadastro')}">
+								<f:facet name="label">
+									<h:panelGroup>
+									<!-- 	<h:outputText value="Acesso ao Portal EAD" />   -->
+									</h:panelGroup>
+								</f:facet>
+
+								<rich:menuItem rendered="false" submitMode="ajax"
+									value="Preencher Ficha de Inscrição"
+									action="#{preCadastroController.novo}" />
+
+								<rich:menuItem
+									rendered="#{permissaoController.temPermissao('menuPreencherCadastro')}"
+									submitMode="ajax" value="Preencher Ficha de Cadastro"
+									action="#{cadastroController.novo}" />
+							</rich:dropDownMenu>
+
+							<rich:dropDownMenu>
+								<f:facet name="label">
+									<h:panelGroup>
+										<h:commandLink value="Sair" action="#{loginController.logout}" />
+									</h:panelGroup>
+								</f:facet>
+							</rich:dropDownMenu>
+							<rich:spacer width="80" />
+
+							<font size="2"><h:outputText styleClass="teste"
+									value="Usuário:#{loginController.usuario.nome.toUpperCase()}" />
+							</font>
+							<h:outputText
+								rendered="#{loginController.usuario.login eq 'rafaelr'}"
+								value="Usuários Conectados:#{usuarioListener.usuarios}" />
+
+						</rich:toolBar>
+					</h:form>
+					
+					
+				</td>
+			</tr>
+		</table>
+	</ui:insert>
+</a4j:outputPanel>
+
+<a4j:outputPanel rendered="#{not loginController.logado}">
+
+
+	<div style="top:780px"  class="rodape" align="center">
+	
+	<object 
+  type="application/x-shockwave-flash"
+  data="empreendedorismo.swf"
+  width="600" height="400" >
+  <param name="loop" value="true" />
+  <param name="empreendedorismo" value="empreendedorismo.swf" />
+
+</object>
+	    <br/><br/><br/><br/>
+		<img width="1900" height="70" src="#{ctx}/imagens/rodape.jpg" />
+	</div>
+
+	
+	
+</a4j:outputPanel>
+</html>
